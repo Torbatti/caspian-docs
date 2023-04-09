@@ -1,0 +1,43 @@
+---
+
+const { part , part_title } = Astro.props;
+---
+
+<div id={part_title} class="part">
+  <div id="part-title">
+    <h3 class="tc1"> {part_title} </h3>
+  </div>
+  <div id="pages" class="grid">
+    {part.map((page) =>
+      <li id="page" class="flex low-gap">
+
+        <p id="page-number" class="tc1">
+          {page.frontmatter.number} -
+        </p>
+
+        <a href={page.url} class="tc4">
+          {page.frontmatter.title}
+        </a>
+
+      </li>
+    )}  
+  </div>
+</div>
+
+<style>
+  li{list-style:none;}
+  .part{margin-top:1rem;}
+  
+  #part-title{margin-bottom:8px;}
+
+  #pages{margin-right:1rem;}
+  @media(max-width:480px){#pages{grid-template-columns:1fr;}}
+  @media(min-width:480px){#pages{grid-template-columns:1fr 1fr;}}
+  @media(min-width:768px){#pages{grid-template-columns:1fr 1fr 1fr;}}
+  @media(min-width:1280px){#pages{grid-template-columns:1fr 1fr 1fr 1fr;}}
+
+  #page{margin-top:4px;}
+  #page a{text-decoration:none;transition:color 0.3s ease;}
+  #page a:hover{color:#503c24;}
+
+</style>
