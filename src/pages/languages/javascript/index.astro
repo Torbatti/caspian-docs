@@ -1,0 +1,17 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+
+const part = await Astro.glob('../javascript/partone/*.md');
+---
+<Layout>
+  <div class="vbox">
+    {part.map((post) => <li><a href={post.url} class="tc1">{post.frontmatter.title}</a></li>)}
+  </div>
+
+</Layout>
+
+<style>
+  li{list-style:none;}
+
+
+</style>
