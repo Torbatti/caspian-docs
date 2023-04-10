@@ -1,22 +1,23 @@
 ---
 
-const { part , part_title } = Astro.props;
+const { part , part_id ,part_title } = Astro.props;
 ---
 
-<div id={part_title} class="part">
+<div id={part_id} class="part">
   <div id="part-title">
     <h3 class="tc1"> {part_title} </h3>
   </div>
   <div id="pages" class="grid">
-    {part.map((page) =>
+    <!-- FIX ANY TYPE -->
+    {part.map((sub_parts:any) => 
       <li id="page" class="flex low-gap">
 
         <p id="page-number" class="tc1">
-          {page.frontmatter.number} -
+          {sub_parts.frontmatter.number} -
         </p>
 
-        <a href={page.url} class="tc4">
-          {page.frontmatter.title}
+        <a href={sub_parts.url} class="tc4">
+          {sub_parts.frontmatter.title}
         </a>
 
       </li>
@@ -28,7 +29,7 @@ const { part , part_title } = Astro.props;
   li{list-style:none;}
   .part{margin-top:1rem;}
   
-  #part-title{margin-bottom:8px;}
+  #part-title{margin-bottom:0px;}
 
   #pages{margin-right:1rem;}
   @media(max-width:480px){#pages{grid-template-columns:1fr;}}
