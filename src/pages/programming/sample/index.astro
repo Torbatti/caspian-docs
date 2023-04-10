@@ -1,0 +1,34 @@
+---
+const section_title = " سمپل | Sample "
+
+import Layout from "../../../layouts/Layout.astro";
+import PartMapper from "../../../components/PartMapper.astro";
+
+// How To Sort Astro Glob
+// https://www.youtube.com/watch?v=Eq0j71oLsFs
+// https://caseyjamesperno.com/blog/sort-astro-glob/
+
+const partN = await Astro.glob('./partN/*.md');
+const partN_title = " پارت اول : موضوع سمپل ";
+
+// TODO : MAKE SAMPLE WORKING
+// partN{
+//   partN_data,
+//   partN_title
+// }
+---
+<Layout section_title={section_title}>
+  <div class="vbox">
+
+    <div id="section-title" class="tc1"><h3>{section_title}</h3></div>
+
+    <PartMapper part={partN} part_id="part1" part_title={partN_title}/>
+
+  </div>
+</Layout>
+
+<style>
+  #section-title{margin:0.5rem 0;}
+  
+
+</style>
