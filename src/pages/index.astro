@@ -1,7 +1,37 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+import IconCard from "../components/index/IconCard.astro";
+import IconCards from "../components/index/IconCards.astro";
+
+type iconCard =
+{
+  ic_title:string;
+  ic_atitle:string;
+  ic_img_url:string;
+  ic_end_url:string;
+}
+
 ---
 <Layout>
-  <a href="/languages/javascript/">Js</a>
+  <div class="vbox">
+
+    <IconCards ics_title="زبان های برنامه نویسی">
+      <a href="./todo" class="tc1">Todos</a>
+
+      <IconCard 
+        ic_title=" جاوا اسکریپت " 
+        ic_atitle="Js" 
+        ic_img_url="/icons/js.svg" 
+        ic_end_url="/programming/sample"
+      />
+      
+    </IconCards>
+
+  </div>
 	
 </Layout>
+
+<style>
+
+</style>
