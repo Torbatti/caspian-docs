@@ -4,14 +4,6 @@ import Layout from "../layouts/Layout.astro";
 import IconCard from "../components/index/IconCard.astro";
 import IconCards from "../components/index/IconCards.astro";
 
-type iconCard =
-{
-  ic_title:string;
-  ic_atitle:string;
-  ic_img_url:string;
-  ic_end_url:string;
-}
-
 ---
 <Layout>
   <div class="vbox">
@@ -25,6 +17,13 @@ type iconCard =
         ic_img_url="/icons/js.svg" 
         ic_end_url="/programming/sample"
       />
+      <IconCard 
+        ic_title=" راست " 
+        ic_atitle="Rust" 
+        ic_img_url="/icons/rust.svg" 
+        ic_end_url="/programming/rust"
+      />
+      
       
     </IconCards>
 
