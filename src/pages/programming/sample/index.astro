@@ -3,26 +3,39 @@ const section_title = " سمپل | Sample "
 
 import Layout from "../../../layouts/Layout.astro";
 import PartMapper from "../../../components/PartMapper.astro";
+import type { MDXInstance } from "astro";
 
 // How To Sort Astro Glob
 // https://www.youtube.com/watch?v=Eq0j71oLsFs
 // https://caseyjamesperno.com/blog/sort-astro-glob/
 
-const partN = await Astro.glob('./partN/*.md');
+const partN = await Astro.glob('./partN/*.mdx');
 const partN_title = " پارت اول : موضوع سمپل ";
 
-// TODO : MAKE SAMPLE WORKING
-// partN{
-//   partN_data,
-//   partN_title
-// }
+type Part = {
+  title:string,
+  id:string,
+  url:MDXInstance,
+}
+
+type Parts = Array<Part>
+
+const part1:Part = {url:await Astro.glob('./partN/*.mdx'),title:"title",id:"id",}
+const part2:Part = {url:await Astro.glob('./partN/*.mdx'),title:"title",id:"id",}
+const parts:Parts = [part1,part2]
 ---
 <Layout section_title={section_title}>
   <div class="vbox">
 
     <div id="section-title" class="tc1"><h3>{section_title}</h3></div>
 
-    <PartMapper part={partN} part_id="part1" part_title={partN_title}/>
+    {parts.map((part)=>
+        <PartMapper
+          part_title={part.title} 
+          part_id={part.id} 
+          part_url={part.url}
+        />
+    )}
 
   </div>
 </Layout>
